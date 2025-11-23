@@ -1,0 +1,334 @@
+.logoLight {
+  max-width: 200px;
+  text-align: center;
+  margin: auto;
+}
+.logoDark {
+  max-width: 200px;
+  text-align: center;
+  margin: auto;
+}
+.logoLight { display: block; }
+.logoDark  { display: none;  }
+
+body.dark .logoLight { display: none; }
+body.dark .logoDark  { display: block; }
+header {
+  text-align: center;
+}
+
+h1 {
+text-align: center;
+}
+#errorMessage{
+  background-color: #ffdddd;
+  color: #900;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid #f00;
+  border-radius: 5px;
+  display: none;
+}
+/* Outer container that scrolls horizontally */
+.chart-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+  background-color: #ffffffcc;
+}
+
+/* Inner container that forces the chart to be wide */
+.chart-inner {
+  min-width: 800px; /* You can adjust this */
+}
+
+/* Make chart tag fill the inner container */
+.chart-inner canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* toggle styling */
+/* ============== */
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 1px;
+  top: 1px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #007aff;
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* ---------- GLOBAL ---------- */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+  background: #f5f5f7;
+  padding: 20px;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+.inputs-card{
+  transition: background-color 0.3s, color 0.3s;
+}
+.chart-card{
+  transition: background-color 0.3s, color 0.3s;
+}
+.chart-inner{
+  transition: background-color 0.3s, color 0.3s;
+}
+body.dark {
+  background-color: rgb(20,20,20);
+  color: white;
+}
+.inputs-card.dark{
+  box-shadow: 0 0 2px white;
+  background-color: rgb(40,40,40);
+}
+.chart-card.dark{
+  box-shadow: 0 0 2px white;
+  background-color: rgb(40,40,40);
+}
+.chart-inner.dark{
+  background-color: rgb(50,50,50);
+}
+h1, h2 {
+  font-weight: 600;
+}
+
+/* ---------- LAYOUT ---------- */
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  /* align-items: center; */
+}
+
+/* ---------- INPUT CARD ---------- */
+
+.inputs-card, .chart-card {
+  background: #ffffffcc;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 1000px;
+}
+
+.inputs-card {
+  max-width: 350px;
+  margin: auto;
+}
+
+.inputs-card label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.inputs-card input {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background: #fafafa;
+  transition: 0.2s;
+}
+.inputs-card.dark input {
+  background-color: #555;
+  color: #fff;
+  border-color: #888;
+}
+
+
+.inputs-card input:focus {
+  outline: none;
+  border-color: #007aff;
+  background: white;
+}
+
+/* ---------- EXPANDABLE ASSUMPTIONS PANEL ---------- */
+
+.expand-btn {
+  margin-top: 10px;
+  background: #e9e9eb;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.expand-btn:hover {
+  background: #dcdce0;
+}
+
+.assumptions {
+  margin-top: 15px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.assumptions:not(.hidden) {
+  max-height: 400px;
+  opacity: 1;
+}
+
+/* ---------- BUTTON ---------- */
+
+.calc-btn {
+  margin-top: 20px;
+  background: #007aff;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+  color: white;
+  cursor: pointer;
+}
+
+.calc-btn:hover {
+  background: #0062cc;
+}
+
+/* ---------- CHART CARD ---------- */
+
+#chart {
+  padding: 15px;
+}
+
+/* ---------- FI PROGRESS BAR ---------- */
+
+#fiProgressContainer {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 12px;
+  height: 25px;
+  margin: 15px 0;
+  overflow: hidden;
+  display: none; /* Hide by default */
+}
+.chart-card #fiProgressContainer{
+  transition: background-color 0.3s, color 0.3s;
+}
+.chart-card.dark #fiProgressContainer{
+  background-color: #555;
+}
+
+#fiProgressBar {
+  height: 100%;
+  width: 0%;
+  background-color: #34c759; /* iOS green */
+  transition: width 0.6s ease;
+}
+
+#fiPercentText {
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 5px;
+  display: none; /* Hide by default */
+}
+
+/* ---------- TOGGLES ---------- */
+
+.toggles {
+  margin-top: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+}
+.themeButtonContainer{
+  text-align: center;
+  margin-bottom:2rem;
+}
+/*dark mode toggle*/
+.theme-btn {        
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+
+@media (min-width: 1200px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    max-width: 1500px;
+    margin: auto;
+    align-items: start;
+      /* flex-direction: row;
+      align-items: flex-start; */
+  }
+  .theme-btn {
+  position: absolute;
+  top: 20px;            
+  right: 20px;         
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+  .inputs-card {
+      width: 360px;
+      flex-shrink: 0;
+      margin:0;
+  }
+}
+

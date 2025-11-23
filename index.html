@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Independence Visualizer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img class="logoLight" src="FIVLogoLight.png" alt="">
+      <img class="logoDark" src="FIVLogoDark.png" alt="">
+    </header>
+    
+    <div class="container">
+      <h1>Financial Independence Visualizer</h1>
+      <div class="themeButtonContainer">
+    <button id="themeButton" class="theme-btn" onclick="toggleDarkMode()">Dark Mode</button>
+    </div>
+    <div id="errorMessage" class="hidden"></div>
+  <!-- Message will go here -->
+</div>
+
+      <div class="main-layout">
+        <!-- INPUT CARD -->
+        <div class="inputs-card">
+          <h2>Inputs</h2>
+
+          <div class="inputs-visible">
+            <label
+              >Age:
+              <input class="inputColor" type="number" id="age" value="" min="0" max="100" />
+            </label>
+
+            <label
+              >Current Net Worth ($):
+              <input class="inputColor" type="number" id="netWorth" value="" min="0" />
+            </label>
+
+            <label
+              >Monthly Income ($):
+              <input class="inputColor" type="number" id="income" value="" min="0" />
+            </label>
+
+            <label
+              >Monthly Expenses ($):
+              <input class="inputColor" type="number" id="expenses" value=""min="0" />
+            </label>
+
+            <p>
+              <strong>Calculated Monthly Investment: </strong>
+              <span id="monthlyInvestment">0</span>
+            </p>
+          </div>
+
+          <button id="assumptionsToggle" class="expand-btn">
+            Show Assumptions ▼
+          </button>
+
+          <div id="assumptionsPanel" class="assumptions hidden">
+            <label
+              >Annual Wage Growth (%):
+              <input class="" type="number" id="wageGrowth" value="2" />
+            </label>
+
+            <label
+              >Annual Inflation (%):
+              <input class="inputColor" type="number" id="inflation" value="2" />
+            </label>
+
+            <label
+              >Annual ROI (%):
+              <input class="inputColor" type="number" id="roi" value="10" />
+            </label>
+
+            <label
+              >Withdrawal Rate (%):
+              <input class="inputColor" type="number" id="withdrawalRate" value="4" />
+            </label>
+          </div>
+
+          <button id="runCalc" class="calc-btn">Visualize</button>
+        </div>
+
+        <!-- CHART + FI CARD -->
+        <div class="chart-card">
+          <h2 id="fiAgeDisplay"></h2>
+
+          <div id="fiProgressContainer">
+            <div id="fiProgressBar"></div>
+          </div>
+          <p id="fiPercentText"></p>
+
+          <div class="chart-scroll-container">
+            <div class="chart-inner">
+              <canvas id="chart"></canvas>
+            </div>
+          </div>
+
+          <div class="toggles">
+            <label class="switch"
+              ><input
+                type="checkbox"
+                class="toggle"
+                value="netWorth"
+                checked /><span class="slider"></span> Net Worth</label
+            >
+            <label class="switch"
+              ><input
+                type="checkbox"
+                class="toggle"
+                value="income"
+                checked /><span class="slider"></span> Income</label
+            >
+            <label class="switch"
+              ><input
+                type="checkbox"
+                class="toggle"
+                value="expenses"
+                checked /><span class="slider"></span> Expenses</label
+            >
+            <label class="switch"
+              ><input
+                type="checkbox"
+                class="toggle"
+                value="deposits"
+                checked /><span class="slider"></span> Capital Deposited</label
+            >
+            <label class="switch"
+              ><input
+                type="checkbox"
+                class="toggle"
+                value="returns"
+                checked /><span class="slider"></span> Investment Returns</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
